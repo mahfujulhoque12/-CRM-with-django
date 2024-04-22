@@ -1,0 +1,18 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+    <div class="container bg-light shadow p-5 form-layouts">
+        <h3 class='test'>Login</h3>
+        <h5>starts managing your clinets today! Login</h5>
+        <hr>
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{form.as_p}}
+
+            <button type='submit' class="btn btn-dark">Login</button>
+        </form>
+        <div class="text-center"> 
+            <p>already have an account</p> <a href="{% url "register" %}">register</a>
+        </div>
+    </div>
+{% endblock body %}

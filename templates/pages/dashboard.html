@@ -1,0 +1,53 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+<div class="container">
+    <h5 class="mt-5">Wellcome to dashborad page,  {{user}}</h5>
+    <hr>
+    <a class="btn btn-outline-dark btn-sm" href="{% url "create" %}">create new record</a>
+    <hr>
+
+  
+    <table class="table table-light table-hover table-responsive">
+        <thead>
+          <tr class="table-dark">
+            <th scope="col">ID</th>
+            <th >Full Name</th>
+            <th>Email</th>
+            <th >Phone</th>
+            <th >Address</th>
+            <th >City</th>
+            <th >Provience</th>
+            <th >Country</th>
+            <th>Date joined</th>
+            <th>View</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+          <tr>
+            <th scope="row">{{record.id}}</th>
+            <td>{{record.frist_name }} {{record.last_name }} </td>
+            <td>{{record.email }}</td>
+            <td>{{record.phone }}</td>
+            <td>{{record.address }}</td>
+            <td>{{record.city }}</td>
+            <td>{{record.provience }}</td>
+            <td>{{record.country }}</td>
+            <td>{{record.creation_date }}</td>
+            <td>
+              <a class="btn btn-sm btn-warning mb-2" href="{% url 'update' pk=record.pk %}">Update</a> 
+              <a class="btn btn-sm btn-danger d-inline-block" href="{% url 'delete' pk=record.pk %}">Delete</a>
+          </td>
+          
+          
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+ 
+   
+</div>
+ 
+{% endblock body %}
